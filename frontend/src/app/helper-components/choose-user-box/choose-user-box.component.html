@@ -1,0 +1,22 @@
+<div class="cmp-box" xmlns="http://www.w3.org/1999/html">
+  <div class="filter-field-box">
+    <div class="head">Suche nach einem Benutzernamen oder einer E-Mailadresse</div>
+    <input class="filter-field" type="text" placeholder="Benutername oder E-Mailadresse" [(ngModel)]="userFilter" (keyup)="filterUserData()">
+    <input (change)="filterUserData()" (change)="showName = !showName" class="radio" type="radio" name="filter"
+           value="email">E-Mailadresse
+    <input (change)="filterUserData()" (change)="showName = !showName" class="radio" type="radio" name="filter"
+      value="name" checked>Benutzernamen
+  </div>
+  <div id="all-user-area" class="select-box">
+    <div class="item head">Benutzerliste</div>
+    <div class="item-wrapper">
+      <div class="item" *ngFor="let user of filteredUsers" (click)="chooseUser(user)">{{ user.name }}</div>
+    </div>
+  </div>
+  <div id="choosen-user-area" class="select-box">
+    <div class="item head">Ihre Auswahl</div>
+    <div class="item-wrapper">
+      <div class="item" *ngFor="let user of choosenUsers" (click)="unchooseUser(user)">{{ user.name }}</div>
+    </div>
+  </div>
+</div>

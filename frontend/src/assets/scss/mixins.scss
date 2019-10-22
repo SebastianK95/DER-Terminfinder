@@ -1,0 +1,13 @@
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin navHighlight($paddingTop, $paddingBottom, $highlightColor){
+  padding-top: $paddingTop;
+  padding-bottom: $paddingBottom;
+  border-bottom: 2px solid $highlightColor;
+}

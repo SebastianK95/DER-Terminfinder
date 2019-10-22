@@ -1,0 +1,80 @@
+<div class="box-title">Meine Terminpools</div>
+<div class="topbar">
+  <div class="button" routerLink="terminpool">Pool anlegen</div>
+  <div class="clear"></div>
+</div>
+<div class="table_box error_box" *ngIf="errorState[0]">
+  <div *ngFor="let message of errorMessages[0]">
+    <div>{{ message }}</div>
+  </div>
+</div>
+<div class="table_box" *ngFor="let datensatz of data">
+  
+  <!-- Eingeklappt -->
+  <div id="click_box" (click)="expand(datensatz.id)">
+    <div class="table_header">{{ datensatz.name }}</div>
+    
+    <!-- Userstatus zum Finder -->
+    <div class="finder_status" *ngIf="datensatz.userId === myUserId">
+      <div class="finder_status_image finder_status_image_admin"></div>
+      <div class="finder_status_admin">Pooladmin</div>
+    </div>
+    <div class="finder_status" *ngIf="datensatz.userId !== myUserId">
+      <div class="finder_status_image finder_status_image_member"></div>
+      <div class="finder_status_admin">Mitglied</div>
+    </div>
+    <div class="clear"></div>
+
+  </div>
+  
+  <!-- Ausgeklappt -->
+  <div id="expand_box" *ngIf="expanded && expandId === datensatz.id">
+    <div class="table_additional_info">{{ datensatz.description }}</div>
+    
+    <!-- Innere Topbar -->
+    <div class="topbar">
+      <div class="button" routerLink="neuertermin/{{ datensatz.id }}">Termin hinzufügen</div>
+      <div class="clear"></div>
+    </div>
+    
+    <!-- Fehlermeldungen -->
+    <div class="table_box error_box" *ngIf="errorState[datensatz.id]">
+      <div *ngFor="let message of errorMessages[datensatz.id]">
+        <div>{{ message }}</div>
+      </div>
+    </div>
+    
+    <!-- Tabelle -->
+    <table *ngIf="errorState[datensatz.id] === false">
+      <tr>
+        <th></th>
+        <th *ngFor="let termin of datensatz.terminDaten">
+          <div class="table-head-day">{{formatDate(termin.DATE)}}</div>
+          <div class="table-head-month"></div>
+        </th>
+      </tr>
+      <tr>
+        <th></th>
+        <th class="voting-counter" *ngFor="let termin of datensatz.terminDaten">
+          <span *ngIf="getVotingCount(datensatz, termin) == 1; then votingCounterSingle else votingCounterMultiple"></span>
+          <ng-template #votingCounterSingle>{{voting[datensatz.id][termin.ID]|votingCounter}} Person</ng-template>
+          <ng-template #votingCounterMultiple>{{voting[datensatz.id][termin.ID]|votingCounter}} Personen</ng-template>
+        </th>
+      </tr>
+      <tr *ngFor="let user of datensatz.benutzernamen">
+        <td id="name-column">
+          <div id="name">{{user.NAME}}</div>
+        </td>
+        <td *ngFor="let termin of datensatz.terminDaten">
+          <select id="voteSelector" [(ngModel)]="voting[datensatz.id][termin.ID][user.ID][0].STATUS" (change)="setVoting(termin.ID, datensatz.id, user.ID)" [disabled]="myUserId !== user.ID">
+            <option value=""> - </option>
+            <option value="j">Ich habe Zeit</option>
+            <option value="n">Ich habe keine Zeit</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    
+  </div>
+</div>
+<app-loading-bar></app-loading-bar>

@@ -1,0 +1,100 @@
+@import "../assets/scss/styles";
+
+.navbar {
+  &.navbar-light {
+    background-color: #ffffff;
+    box-shadow: $basicShadow;
+  }
+  box-sizing: border-box;
+  .nav-item {
+    &:hover {
+      .nav-link:not(.activeNav) {
+        @include navHighlight(8px, 0px, #2E7ECC);
+      }
+    }
+    .nav-link {
+      &.activeNav {
+        color: black;
+        @extend .active;
+        @include navHighlight(5px, 3px, #FF5E53);
+      }
+      border-bottom: none;
+      @include transition($activeNavItemTransition);
+    }
+  }
+  .hoverable-link{
+    cursor: pointer;
+  }
+}
+
+.centered_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.border_box {
+  border: 1px solid #000000;
+  padding: 4px;
+}
+
+.box_title {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: #d0d0d0;
+  padding: 4px;
+}
+
+.textfield_box {
+  position: relative;
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.textfield {
+  padding: 8px;
+  font-size: 14px;
+  width: 400px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.button {
+  margin: 2px;
+  margin-top: 8px;
+  width: 200px;
+  padding: 4px;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+}
+
+.button:hover {
+  background-color: #bafeff;
+  cursor: pointer;
+}
+
+.errorBox {
+  font-family: ARIAL, VERDANA, HELVETICA;
+  font-size: 14px;
+  width: 400px;
+  text-align: center;
+  border: 1px solid red;
+  background-color: #FF6F69;
+  margin: 4px;
+  padding: 4px;
+}
+
+.errorBox_title {
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 16px;
+}

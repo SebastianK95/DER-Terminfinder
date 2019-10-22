@@ -1,0 +1,19 @@
+<br>
+<div class="container">
+  <label for="changePassword">Login:</label>
+  <fieldset id="changePassword">
+    <div class="form-group">
+      <label for="email">E-Mail:</label>
+      <input type="text" id="email" name="email" placeholder="E-Mail" class="form-control" [(ngModel)]="email">
+      <label for="password">Kennwort:</label>
+      <input type="password" name="password" password="Kennwort" id="password" placeholder="Kennwort"
+             class="form-control"
+             [(ngModel)]="password"
+             (keyup.enter)="login()"
+      >
+      <br>
+      <input type="button" class="btn-success btn form-control" name="login" value="Login" (click)="login()">
+      <input type="button" class="btn-outline-warning btn form-control" name="resetPassword" value="Passwort vergessen" (click)="resetPassword()">
+    </div>
+  </fieldset>
+</div>

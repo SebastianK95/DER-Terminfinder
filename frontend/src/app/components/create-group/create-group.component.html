@@ -1,0 +1,18 @@
+<div class="box-title">Gruppe anlegen</div>
+<div class="table-box">
+<form>
+  <div class="textfield-box">
+    <div class="label">Bezeichnung</div>
+    <input type="text" class="textfield" name="bezeichnung" placeholder="Bezzeichnung der Gruppe" [(ngModel)]="name"/>
+  </div>
+  <div class="textfield-box">
+    <div class="label">Beschreibung</div>
+    <textarea class="textfield" name="beschreibung" placeholder="Hier können Sie eine kurze Beschreibung für die Gruppe hinterlegen" [(ngModel)]="description"></textarea>
+  </div>
+  <div class="textfield-box">
+    <app-choose-user-box></app-choose-user-box>
+  </div>
+  <div class="button" (click)="validateInput()">eintragen</div>
+</form>
+</div>
+<app-message-box></app-message-box>

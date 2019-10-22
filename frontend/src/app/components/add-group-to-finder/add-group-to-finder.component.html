@@ -1,0 +1,16 @@
+<div class="window_wrapper">
+  <div class="window">
+    <div class="window_topbar">
+      <div class="window_text">Wählen Sie einen Pool</div>
+      <div class="window_close" (click)="back()">Schließen</div>
+      <div class="clear"></div>
+    </div>
+    <div class="window_content">
+      <ul>
+        <li *ngFor="let finder of finders" (click)="update(finder.id)">
+          {{ finder.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

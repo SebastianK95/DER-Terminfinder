@@ -1,0 +1,16 @@
+<br>
+<div class="container" *ngIf="show">
+  <label for="changePassword">Passwort ändern:</label>
+  <fieldset id="changePassword">
+    <div class="form-group">
+      <label class="form-check-label" for="currentPassword">Momentanes Passwort: </label>
+      <input class="form-control" [(ngModel)]="currentPassword" type="password" id="currentPassword">
+      <label class="form-check-label" for="newPassword">Neues Passwort: </label>
+      <input class="form-control" [(ngModel)]="newPassword" type="password" id="newPassword">
+      <br>
+      <input type="button" class="form-control btn btn-success" value="Passwort ändern" (click)="submit()">
+    </div>
+  </fieldset>
+</div>
+<app-message-box></app-message-box>
+

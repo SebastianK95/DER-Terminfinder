@@ -1,0 +1,23 @@
+<router-outlet>
+    <nav class="navbar navbar-expand-md navbar-light bg-faded">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" routerLink="/">Der <img src="/assets/logo.png" width="30" height="30"
+                                                        class="d-inline-block align-top" alt="">erminfinder</a>
+        <div class="navbar-collapse collapse dual-collapse" style="float: left">
+            <ul class="navbar-nav ml-auto">
+                <ng-container *ngFor="let route of routes">
+                    <li class="nav-item">
+                        <a *ngIf="route.path && !route.callable" [ngClass]="isActiveRoute(route)" class="nav-link"
+                           routerLink="{{route.path}}">{{route.name}}</a>
+                        <a *ngIf="route.callable" class="nav-link hoverable-link"
+                           (click)="call(route)">{{route.name}}</a>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+    </nav>
+</router-outlet>
+<app-message-box></app-message-box>
+

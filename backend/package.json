@@ -1,0 +1,51 @@
+{
+  "name": "derterminfinderbackend",
+  "repository": "https://github.com/silviokennecke/DER-Terminfinder/",
+  "version": "1.0.0",
+  "description": "backend",
+  "main": "compiled/server.js",
+  "scripts": {
+    "tests": "mocha -r ts-node/register tests/**/*.spec.ts",
+    "test": "mocha -r ts-node/register ",
+    "start": "npm install && node compiled/server.js",
+    "migrate": "node node_modules/db-migrate/bin/db-migrate",
+    "tsc": "node node_modules/.bin/tsc"
+  },
+  "keywords": [
+    "backend"
+  ],
+  "author": "Team der Terminfinder",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cors": "^2.8.3",
+    "@types/express": "^4.0.39",
+    "@types/express-graphql": "0.0.35",
+    "@types/graphql": "^0.11.7",
+    "@types/node": "^8.5.1",
+    "@types/sqlite3": "^3.1.1",
+    "@types/uuid": "^3.4.3",
+    "@types/winston": "^2.3.8",
+    "cors": "^2.8.4",
+    "db-migrate": "^0.10.2",
+    "db-migrate-sqlite3": "^0.2.1",
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
+    "express-session": "^1.15.6",
+    "graphql": "^0.11.7",
+    "node-gyp": "^3.6.2",
+    "nodemailer": "^4.4.2",
+    "session-file-store": "^1.2.0",
+    "sqlite3": "^4.0.0",
+    "typescript": "^2.6.2",
+    "uuid": "^3.2.1",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/expect": "^1.20.2",
+    "@types/mocha": "^2.2.46",
+    "@types/nodemailer": "^4.6.0",
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0",
+    "ts-mocha": "^1.1.0"
+  }
+}

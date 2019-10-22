@@ -1,0 +1,28 @@
+<div class="border_box">
+  <div class="box_title">Benutzerregistrierung</div>
+  <div class="centered_container">
+    <form>
+      <div class="textfield_box">
+        <div class="label">Benutzername</div>
+        <input type="text" class="textfield" name="username" placeholder="Benutzername" [(ngModel)]="username"/>
+      </div>
+      <div class="textfield_box">
+          <div class="label">E-Mail</div>
+        <input type="email" class="textfield" name="email" placeholder="E-Mail" (blur)="checkEmail()" [ngStyle]="!mailValid && email !== '' ? {'backgroundColor':'#FF6F69'} : {'backgroundColor':'#FFFFFF'}" [(ngModel)]="email"/>
+      </div>
+      <div class="textfield_box">
+          <div class="label">Kennwort</div>
+        <input type="password" class="textfield" name="password" placeholder="Kennwort" [(ngModel)]="password"/>
+      </div>
+      <div class="textfield_box">
+          <div class="label">Kennwort wiederholen</div>
+        <input type="password" class="textfield" name="password_retry" placeholder="Kennwort wiederholen" [(ngModel)]="password_retry"/>
+      </div>
+      <div class="centered_container">
+        <input type="button" class="button" name="register" value="Registrieren" (click)="submit()"/>
+        <input type="reset" class="button" name="reset" value="Zurücksetzen" />
+      </div>
+    </form>
+  </div>
+  <app-message-box></app-message-box>
+</div>

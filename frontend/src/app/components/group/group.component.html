@@ -1,0 +1,65 @@
+<div class="box-title">Meine Gruppen</div>
+<div class="topbar">
+  <div class="button" routerLink="creategroup">Gruppe anlegen</div>
+  <div class="clear"></div>
+</div>
+<div class="table_box error_box" *ngIf="errorState[0]">
+  <div *ngFor="let message of errorMessages[0]">
+    <div>{{ message }}</div>
+  </div>
+</div>
+<div class="table_box" *ngFor="let datensatz of data">
+  
+  <!-- Eingeklappt -->
+  <div id="click_box" (click)="expand(datensatz.id)">
+    <div class="table_header">{{ datensatz.name }}</div>
+    
+    <div class="group_status" *ngIf="datensatz.userId === myUserId">
+      <div class="group_status_image group_status_image_admin"></div>
+      <div class="group_status_admin">Pooladmin</div>
+    </div>
+    <div class="group_status" *ngIf="datensatz.userId !== myUserId">
+      <div class="group_status_image group_status_image_member"></div>
+      <div class="group_status_admin">Mitglied</div>
+    </div>
+    
+    <div class="clear"></div>
+  </div>
+  
+  <!-- Ausgeklappt -->
+  <div id="expand_box" *ngIf="expanded && expandId === datensatz.id">
+    <div class="table_additional_info">
+      <div *ngIf="datensatz.finderNames !== null">
+        Die Gruppenmitglieder befinden sich in den Gruppen:
+        <span *ngFor="let finders of datensatz.finderNames">{{ finders.NAME }} | </span>
+      </div>
+      Gruppenbeschreibung: {{ datensatz.description }}
+    </div>
+    
+    <!-- Innere Topbar -->
+    <div class="topbar" *ngIf="datensatz.userId === myUserId">
+      <div class="button user_add" routerLink="addUser/{{ datensatz.id }}"></div>
+      <div class="button group_add" routerLink="addFinder/{{ datensatz.id }}"></div>
+      <div class="button group_remove" routerLink="removeFinder/{{ datensatz.id }}"></div>
+      <div class="clear"></div>
+    </div>
+    
+    <!-- Fehlermeldungen -->
+    <div class="table_box error_box" *ngIf="errorState[datensatz.id]">
+      <div *ngFor="let message of errorMessages[datensatz.id]">
+        <div>{{ message }}</div>
+      </div>
+    </div>
+    
+    <!-- Tabelle -->
+    <ul *ngIf="errorState[datensatz.id] === false">
+      <li *ngFor="let user of datensatz.benutzernamen">
+          <div class="float_l" id="name">{{user.NAME}}</div>
+        <div class="float_r user_remove" *ngIf="datensatz.userId === myUserId" (click)="removeUserFromGroup(user.ID, datensatz.id)"></div>
+          <div class="clear"></div>
+      </li>
+    </ul>
+    
+  </div>
+</div>
+<app-loading-bar></app-loading-bar>

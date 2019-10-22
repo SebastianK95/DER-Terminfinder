@@ -1,0 +1,15 @@
+<div class="box-title">Terminpool anlegen</div>
+<div class="table-box">
+<form>
+  <div class="textfield-box">
+    <div class="label">Bezeichnung</div>
+    <input type="text" class="textfield" name="bezeichnung" placeholder="Bezeichnung der Terminfindung" [(ngModel)]="bezeichnung"/>
+  </div>
+  <div class="textfield-box">
+    <div class="label">Beschreibung</div>
+    <textarea class="textfield" name="beschreibung" placeholder="Hier können Sie eine kurze Beschreibung für die Terminfindung hinterlegen" [(ngModel)]="beschreibung"></textarea>
+  </div>
+  <div class="button" (click)="validateInput()">eintragen</div>
+</form>
+</div>
+<app-message-box></app-message-box>

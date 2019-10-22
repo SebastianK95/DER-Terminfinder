@@ -1,0 +1,17 @@
+<div class="window_wrapper" *ngIf="state">
+  <div class="window">
+    <div class="window_topbar">
+      <div class="window_text">{{ config.title }}</div>
+      <div class="window_close" (click)="close()">X</div>
+      <div class="clear"></div>
+    </div>
+    <div class="window_content">
+      {{ config.message }}
+    </div>
+    <div class="bottom_bar" *ngIf="config.typ === 'trueFalse'">
+      <button class="button" (click)="config.trueFalse.abort()">Abbrechen</button>
+      <button class="button" (click)="config.trueFalse.ok()">OK</button>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>

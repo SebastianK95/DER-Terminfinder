@@ -1,0 +1,13 @@
+<br>
+<div class="container mainfeet">
+    <div class="form-check form-check-inline date">
+        <label>
+            Datum:
+            <datetime [(ngModel)]="date"></datetime>
+        </label>
+    </div>
+    <br> Privat:
+    <input type="checkbox" [checked]="isprivat" (change)="isprivat = !isprivat" />
+    <br><br>
+    <button type="button" class="btn btn-primary" (click)="terminHinzufuegen()"> Termin hinzufügen</button>
+</div>
